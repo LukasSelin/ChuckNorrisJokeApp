@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace ChuckNorris.Models
 {
@@ -10,7 +11,7 @@ namespace ChuckNorris.Models
         public string ID { get; set; }
         public string Value { get; set; }
         public bool IsFavorite { get; set; } = false;
-        public Xamarin.Forms.ImageSource ImageSource { get; set; } = Icon.NonFavorite;
+        public ImageSource ImageSource { get; set; } = Icon.NonFavorite;
 
     }
 }
