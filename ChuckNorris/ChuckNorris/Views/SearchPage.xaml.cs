@@ -28,11 +28,12 @@ namespace ChuckNorris.Views
             searchResults.ItemsSource = _viewModel.Jokes = new ObservableCollection<Joke>(await _viewModel.JokeRepository.GetFromSearch(searchBar.Text, _viewModel.SelectedFilter));
         }
 
-        private void DropdownFilter_SelectedIndexChanged(object sender, EventArgs e)
+        private async void DropdownFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (ChuckNorris.Controls.CustomPicker)sender;
             _viewModel.SelectedFilter = (string) picker.SelectedItem;
             SelectedFilter.Text = _viewModel.SelectedFilter;
+            searchResults.ItemsSource = await _viewModel.JokeRepository.GetFromSearch(searchBar.Text, _viewModel.SelectedFilter);
         }
     }
 }
