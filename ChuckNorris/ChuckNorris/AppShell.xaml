@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:ChuckNorris.Views"
+       x:Class="ChuckNorris.AppShell">
+
+        <TabBar>
+            <ShellContent Title="Homepage" Icon="ic_house_black_18dp.png" ContentTemplate="{DataTemplate local:HomePage}" />
+            <ShellContent Title="Search" Icon="ic_search_black_18dp.png" ContentTemplate="{DataTemplate local:SearchPage}" />
+        </TabBar>
+</Shell>

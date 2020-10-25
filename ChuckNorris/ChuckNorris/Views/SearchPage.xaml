@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ChuckNorris.Models"  
+             xmlns:local="clr-namespace:ChuckNorris.ViewModels"
+             xmlns:controls="clr-namespace:ChuckNorris.Controls"
+             Title="{Binding Title}"
+             x:Class="ChuckNorris.Views.SearchPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SelectedFilter"  Text="{Binding SelectedFilter}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15" Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <SearchBar x:Name="searchBar" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="Search joke..."></SearchBar>
+                <controls:CustomPicker x:Name="DropdownFilter" 
+                                       Image="ic_filter_alt_black_18dp" 
+                                       BackgroundColor="Transparent" 
+                                       WidthRequest="40" 
+                                       ItemsSource="{Binding Filters}"
+                                       SelectedIndexChanged="DropdownFilter_SelectedIndexChanged">
+                </controls:CustomPicker>
+            </StackLayout>
+
+            <CollectionView x:Name="searchResults">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Joke">
+                        <Frame>
+                            <StackLayout Orientation="Horizontal">
+                                <Label HeightRequest="35"
+                                       Text="{Binding Value}"
+                                       LineBreakMode="TailTruncation"
+                                       VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SearchPageViewModel}}, Path=ItemTapped}"
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <ImageButton Command="{Binding Source={RelativeSource AncestorType={x:Type local:SearchPageViewModel}}, Path=ToggleIconCommand}" 
+                                             CommandParameter="{Binding .}" 
+                                             HorizontalOptions="EndAndExpand"
+                                             BackgroundColor="Transparent">
+                                    <ImageButton.Source>
+                                        <FileImageSource File="{Binding ImageSource}"></FileImageSource>
+                                    </ImageButton.Source>
+                                    <ImageButton.Triggers>
+                                        <DataTrigger TargetType="ImageButton" Binding="{Binding IsFavorite}" Value="True">
+                                            <Setter Property="Source" Value="ic_star_black_18dp.png"></Setter>
+                                        </DataTrigger>
+                                    </ImageButton.Triggers>
+                                </ImageButton>
+                            </StackLayout>  
+                        </Frame>
+                      
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+    
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

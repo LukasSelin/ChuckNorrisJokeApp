@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChuckNorris.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FrameCardViewStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="15" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="OutlineColor" Value="LightGray" />
+                <Setter Property="BorderColor" Value="LightGray" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="HeightRequest" Value="15" />
+            </Style>
+            <Style x:Key="profileImageFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

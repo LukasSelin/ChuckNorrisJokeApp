@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChuckNorris.Views.JokeDetailsPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="FavoriteIcon" IconImageSource="{Binding Joke.ImageSource}" Order="Primary" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Joke.Value}"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
